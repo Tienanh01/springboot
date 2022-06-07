@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm trường đại học</title>
+</head>
+<body>
+
+  <form th:action="@{/university/add}" method="post">
+    <input  placeholder="id" name="id">
+    <input  placeholder="tentruong" name="tentruong">
+    <input  placeholder="vitri" name="vitri">
+    <input  placeholder="ratting" name="xephang">
+    <input  placeholder="loại đào tạo" name="loaidaotao">
+    <input type="submit" value="Save">
+  </form>
+</body>
+</html>

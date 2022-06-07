@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Search person here</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Age</th>
+        <th>Name</th>
+        <th>Country</th>
+    </tr>
+    <tr><a th:href="@{/person/add}">Create</a> </tr>
+    <tr th:each=" person : ${pList}">
+        <td th:text="${person.id}" ></td>
+        <td th:text="${person.age}" ></td>
+        <td th:text="${person.name}" ></td>
+        <td th:text="${person.country}" ></td>
+        <td>   <a th:href="@{'/person/get/' + ${person.id}}">View</a></td>
+         <td> <a th:href="@{'/person/delete?id=' +${person.id} }" > Delete</a></td>
+        <td> <a th:href="@{'/person/edit?id=' +${person.id} }" > Edit</a></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

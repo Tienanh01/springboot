@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>University edit</title>
+</head>
+<body>
+<form th:action="@{/university/edit}" method="post"  th:Object="${uni}">
+    <input th:field="*{id}" name="tenTruong">
+    <br>
+    <br>
+    <input th:field="*{tentruong}" name="idUniversity">
+    <br>
+    <br>
+    <input th:field="*{vitri}" name="soKhoa">
+    <br>
+    <br>
+
+    <input th:field="*{xephang}" name="viTri">
+    <br>
+    <br>
+    <input th:field="*{loaidaotao}" name="xepHang">
+    <br>
+    <br>
+    <button type="submit" >Save</button>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--    <form action="/person/edit" method="post">-->
+<!--        <input readonly th:value ="${person.id}"  name="id"  >-->
+<!--        <input th:value ="${person.age}"  name="age" >-->
+<!--        <input th:value ="${person.name}"  name="name" >-->
+<!--        <input th:value ="${person.country}"  name="country" >-->
+<!--        <button type="submit">save</button>-->
+<!--    </form>-->
+
+    <form action="/person/edit" method="post" th:object="${person}">
+        <input readonly th:field="*{id}" name="id">
+        <input  th:field="*{age}" name="age">
+
+        <input  th:field="*{name}"  name="name">
+        <p th:errors="*{name}"></p>
+        <input th:value ="*{country}"  name="country" >
+        <button type="submit">save</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--private int id;-->
+<!--private String name;-->
+<!--private String email;-->
+<!--private String phone;-->
+<!--private String city;-->
+<body>
+  <h1>Hello t là student add</h1>
+        <form th:action="@{/student/search}" method="post" >
+            <input placeholder="Id" name="id" maxlength="6">
+            <input placeholder="Name" name="name" maxlength="26">
+            <input placeholder="Email" name="email" maxlength="26">
+            <input placeholder="Phone" name="phone" maxlength="10">
+            <input placeholder="City" name="city" maxlength="36">
+            <input type="submit" value="Save">
+        </form>
+</body>
+</html>

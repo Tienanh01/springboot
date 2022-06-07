@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang hiển thị danh sách </title>
+    <style>
+        .mgr-5{
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div >
+    <span  class="mgr-5">ID</span>
+    <span  class="mgr-5">Name</span>
+    <span  class="mgr-5">Email</span>
+    <span  class="mgr-5">Phone</span>
+    <span  class="mgr-5">City</span>
+</div>
+      <div th:each=" p:  ${list}">
+       <span th:text="${p.id}" class="mgr-5"></span>
+          <span th:text="${p.name}" class="mgr-5"></span>
+          <span th:text="${p.email}" class="mgr-5"></span>
+          <span th:text="${p.phone}" class="mgr-5"></span>
+          <span th:text="${p.city}" class="mgr-5"></span>
+          <span>   <a th:href="@{'/student/get/' + ${p.id}}">View</a></span>
+          <a th:href="@{'/student/delete?id= '+${p.id} }">Delete</a> </span>
+          <a th:href="@{'/student/edit?id= '+${p.id} }">Edit</a> </span>
+
+
+      </div>
+</body>
+</html>

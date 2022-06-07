@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student</title>
+</head>
+<body>
+<form th:action="@{/student/edit}" method="post" th:Object="${p}" >
+    <input th:field="*{id}" name="id" >
+    <input th:field="*{name}" name="name">
+    <input th:field="*{email}" name="email" maxlength="26">
+    <input th:field="*{phone}" name="phone" maxlength="10">
+    <input th:field="*{city}" name="city" maxlength="36">
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

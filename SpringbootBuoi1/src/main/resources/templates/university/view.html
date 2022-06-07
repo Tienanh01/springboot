@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đây là trang view </title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tên Trường</th>
+        <th>Vị trí</th>
+        <th>Xếp hạng</th>
+        <th>Loại đào tạo</th>
+    </tr>
+    <tr>
+        <td th:text="${uni.id}"></td>
+        <td th:text="${uni.tentruong}"></td>
+        <td th:text="${uni.vitri}"></td>
+        <td th:text="${uni.xephang}"></td>
+        <td th:text="${uni.loaidaotao}"></td>
+
+    </tr>
+
+</table>
+</body>
+</html>
