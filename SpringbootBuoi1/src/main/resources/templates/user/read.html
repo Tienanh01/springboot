@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đây là </title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Role</th>
+        </tr>
+        <tr th:each="user : ${user}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.role}"></td>
+            <td><a th:href="@{'/user/detail?id=' + ${user.id}}">View</a></td>
+            <td><a th:href="@{'/user/delete?id=' + ${user.id}}">Delete</a></td>
+            <td><a th:href="@{'/user/edit?id=' + ${user.id}}">Edit</a></td>
+
+
+
+        </tr>
+    </table>
+</body>
+</html>

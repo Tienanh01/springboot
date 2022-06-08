@@ -6,9 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.BindException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,10 +37,70 @@ public class PersonController {
         return "person/add";
     }
     @PostMapping(value = "/person/add1")
-    public String addPerson(@ModelAttribute Person p) {
+    public String addPerson(@ModelAttribute Person p , @RequestParam(name="file" ,required = false) MultipartFile file) {
+
+        if (file!=  null && file.getSize() >0){
+            final  String Folder ="E:/";
+            String fileName = file.getOriginalFilename() ;
+
+            File outputFile = new File(Folder +fileName);
+
+            try {
+                file.transferTo(outputFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            p.setFileUrl("/person/dowload?filename="+fileName);
+        }
+
+
         list.add(p);
         return "redirect:/person/search";
     }
+//    @GetMapping("person/dowload")
+//    public void dowload(HttpServletResponse response,@RequestParam("filename") String filename){
+//        final String Folder ="E:/";
+//        File file = new File(Folder+filename);
+//            String duoiFile[] = filename.split(".");
+//            String duoifile = duoiFile[2].toString();
+//            if(duoifile.equals("pdf")){
+//
+//            }
+//        // File name set responds
+//        if(file.exists()){
+//            response.setHeader("Content-Disposition","inline; filename=\"" +filename+"\"");
+//            response.setContentType("application/msword;name=\""+filename+"\"");
+//
+//          try {
+//              Files.copy(file.toPath(),response.getOutputStream());
+//          }
+//          catch (Exception e){
+//          }
+//        }
+//
+//    }
+@GetMapping("person/dowload")
+public void dowload(HttpServletResponse response,@RequestParam("filename") String filename){
+    final String Folder ="E:/";
+    File file = new File(Folder+filename);
+    String duoiFile[] = filename.split(".");
+    String duoifile = duoiFile[2].toString();
+    if(duoifile.equals("pdf")){
+
+    }
+    // File name set responds
+    if(file.exists()){
+        response.setHeader("Content-Disposition","inline; filename=\"" +filename+"\"");
+        response.setContentType("application/msword;name=\""+filename+"\"");
+
+        try {
+            Files.copy(file.toPath(),response.getOutputStream());
+        }
+        catch (Exception e){
+        }
+    }
+
+}
     @GetMapping("/person/search")
     public String search(Model model) {
         model.addAttribute("pList", list);
@@ -110,8 +178,6 @@ public class PersonController {
                     p.setCountry(person.getCountry());
                 }
             });
-
-
         return "redirect:/person/search";
     }
 }

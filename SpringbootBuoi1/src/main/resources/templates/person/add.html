@@ -7,7 +7,7 @@
 <body>
 <h1> Add person here</h1>
 
-<form action="/person/add1" method="post" >
+<form th:action="@{/person/add1}" method="post"  enctype="multipart/form-data">
     <input placeholder="id" name="id">
     <br>
     <input placeholder="age" name="age">
@@ -16,7 +16,9 @@
     <br>
     <input placeholder="country" name="country">
     <br>
-    <button type="submit" >Save</button>
+    <br>
+    <input type="file" name="file">
+    <button type="submit"  th:text="#{button.save}" >Save</button>
 </form>
 </body>
 </html>
